@@ -1,0 +1,13 @@
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+  php:
+    build: build
+    ports:
+      - '8080:80'
+    volumes:
+      - ./redis.ini:/usr/local/etc/php/conf.d/redis.ini
+      - ./index.php:/var/www/html/index.php
+
